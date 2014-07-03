@@ -50,7 +50,7 @@ class ParseCoral
 
   def captcha_present?
     page.has_selector?(:id, '_CaptchaImageWindow__StaticWindow') &&
-      page.find('#_CaptchaImageWindow__StaticWindow').visible?
+        page.find('#_CaptchaImageWindow__StaticWindow').visible?
   end
 
   # def spinner_shown?
@@ -63,6 +63,90 @@ class ParseCoral
 
   def fill_to_country_by(value)
     page.select(value, from: 'ctl00$ContentPlaceHolder1$toCountry_SEL')
+  end
+
+  def check_regions_by(value)
+    page.check(value)
+  end
+
+  def fill_date_from_by(value)
+    page.fill_in('txtDateFrom', value)
+  end
+
+  def fill_date_to_by(value)
+    page.fill_in('txtDateTo', value)
+  end
+
+  def fill_adults_by(value)
+    page.select(value, from: 'ctl00$ContentPlaceHolder1$cbAdult_SEL')
+  end
+
+  def fill_children_by(value)
+    page.select(value, from: 'ctl00$ContentPlaceHolder1$cbChild_SEL')
+  end
+
+  def fill_nights_begin_by(value)
+    page.select(value, from: 'ctl00$ContentPlaceHolder1$cbNightBegin_SEL')
+  end
+
+  def fill_nights_end_by(value)
+    page.select(value, from: 'ctl00$ContentPlaceHolder1$cbNightEnd_SEL')
+  end
+
+  def fill_min_price_by(value)
+    page.fill_in('txtMinPrice', value)
+  end
+
+  def fill_max_price_by(value)
+    page.fill_in('txtMaxPrice', value)
+  end
+
+  def fill_currency_by(value)
+    page.select(value, from: 'ctl00$ContentPlaceHolder1$cbCurrency_SEL')
+  end
+
+  def fill_meal_by(value)
+    page.select(value, from: 'ctl00$ContentPlaceHolder1$cbMeal_SEL')
+  end
+
+  def fill_category_by(value)
+    page.select(value, from: 'ctl00$ContentPlaceHolder1$cbCategory_SEL')
+  end
+
+  def fill_room_type_by(value)
+    page.select(value, from: 'ctl00$ContentPlaceHolder1$cbRoomType_SEL')
+  end
+
+  def check_hotel_con_by(value)
+    page.check(value)
+  end
+
+  def check_all_hotel
+    page.check('all_Hot_Chc')
+  end
+
+  def check_hotel_by(value)
+    page.check(value)
+  end
+
+  def check_stop_sale
+    page.check('chcStopSale')
+  end
+
+  def check_discount_hotels
+    page.check('chcDiscountHotels')
+  end
+
+  def check_flights
+    page.check('chcFlight')
+  end
+
+  def check_confirm
+    page.check('chcOnlyConfirm')
+  end
+
+  def check_recommended
+    page.check('chcRecommended')
   end
 
   def submit_product_search_form()

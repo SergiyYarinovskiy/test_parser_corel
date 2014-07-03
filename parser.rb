@@ -1,12 +1,13 @@
 require 'nokogiri'
 require "capybara"
 require 'capybara/dsl'
-# require 'capybara-webkit'
+require 'selenium/webdriver'
 
 # for debug
 require 'benchmark'
 require 'capybara-screenshot'
 require 'awesome_print'
+
 
 # TODO: error checker
 class ParseCoral
@@ -14,7 +15,8 @@ class ParseCoral
   URL = 'http://online.coral.ru/UI/Package/Search.aspx?/SearchHotel.aspx'
 
   def initialize
-    Capybara.default_driver = :selenium
+    Capybara.run_server = false
+    Capybara.current_driver = :selenium
     Capybara.default_wait_time = 5
     Capybara.app_host = URL
     # for debug
@@ -23,7 +25,6 @@ class ParseCoral
 
   def look_for_toures
     visit('/')
-
     fill_form_area_by('Минск')
     fill_to_country_by('Испания')
     submit_product_search_form
